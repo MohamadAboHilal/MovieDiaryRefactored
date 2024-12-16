@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Responsive Page</title>
-    <link rel="stylesheet" href="./src/styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link
       rel="stylesheet"
@@ -24,7 +25,7 @@
       >
         <!-- Header-->
         <!-- search -->
-        <form class="flex items-center w-[300px]">
+        <form id="searchForm" class="flex items-center w-[300px]">
           <div class="relative w-full">
             <div
               class="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none"
@@ -254,6 +255,6 @@
         </div>
       </div>
     </div>
-    <script type="module" src="./src/mohamad/app.js"></script>
+    <script type="module" src="src/main.js"></script>
   </body>
 </html>
