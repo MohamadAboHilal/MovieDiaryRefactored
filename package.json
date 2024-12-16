@@ -2,7 +2,10 @@
     "name": "my-parcel-app",
     "source": "index.html",
     "scripts": {
-      "dev": "parcel",
-      "build": "parcel build"
+        "dev": "parcel",
+        "build": "parcel build"
+    },
+    "devDependencies": {
+        "parcel": "^2.13.2"
     }
 }
