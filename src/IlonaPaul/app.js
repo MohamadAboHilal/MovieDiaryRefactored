@@ -1,4 +1,3 @@
-import { fetchMovieDetails } from "../mohamad/network.js"; // needs to get movie from main
 import { createMovieCard, createNotePopup, removeMovieCard } from "./ui.js";
 import {
   getFavorites,
@@ -10,18 +9,17 @@ import {
 document.addEventListener("DOMContentLoaded", async () => {
   const favoritesList = document.getElementById("favorites-list");
 
-  // check weather favorite or not
+  // Check if movie is in favorites
   function isFavorite(movieId) {
     const favorites = getFavorites();
     return favorites.includes(movieId);
   }
 
-  // favorite status
+  // Toggle favorite status for a movie
   function toggleFavorite(movieId, favBtn) {
     let favorites = getFavorites();
 
     if (isFavorite(movieId)) {
-      //
       favorites = favorites.filter((id) => id !== movieId);
       favBtn.classList.remove("text-red-500");
       removeMovieCard(movieId);
@@ -31,22 +29,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     setFavorites(favorites);
+    renderFavorites(); // Re-render to update the list dynamically
   }
 
-  // favorite movies
+  // Render favorite movies
   async function renderFavorites() {
     const favorites = getFavorites();
-    favoritesList.innerHTML = "";
+    favoritesList.innerHTML = ""; // Clear the existing list
 
     for (const movieId of favorites) {
       try {
-        // get details for movie
+        // Fetch details for each favorite movie
         const movie = await fetchMovieDetails(movieId);
 
-        // create card for movie
+        // Create the movie card
         const card = createMovieCard(
           movie,
-          true,
+          true, // isFavorite
           toggleFavorite,
           (movieId, noteBtn) =>
             createNotePopup(
@@ -58,7 +57,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           getNoteForMovie
         );
 
-        // Append to list
+        // Append card to the list
         favoritesList.appendChild(card);
       } catch (error) {
         console.error(`Error fetching movie details for ID ${movieId}:`, error);
@@ -66,6 +65,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  // render on page
+  // Initial render of favorites
   await renderFavorites();
 });

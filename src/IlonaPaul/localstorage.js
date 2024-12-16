@@ -1,5 +1,6 @@
 export function getFavorites() {
-  return JSON.parse(localStorage.getItem("favorites")) || [];
+  const favorites = JSON.parse(localStorage.getItem("favorites"));
+  return favorites ? favorites : [];
 }
 
 export function setFavorites(favorites) {
