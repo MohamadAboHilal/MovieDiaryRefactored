@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "parcel index.html",
+    "dev": "parcel index.html journal.html",
     "build": "tailwindcss -i ./input.css -o ./css/output.css --minify"
   },
   "devDependencies": {
