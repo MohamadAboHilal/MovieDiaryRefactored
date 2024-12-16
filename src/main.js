@@ -106,3 +106,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setupSearch(searchForm, searchInput, movieGrid);
 });
+
+// // journal
+
+// import renderCardList from "./test/ui.js";
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   renderCardList();
+//   console.log("Card List");
+// });
+// // document.addEventListener("DOMContentLoaded", renderCardList);
