@@ -88,7 +88,12 @@ export function populateMovieGrid(
     favBtn.innerHTML = '<i class="fas fa-heart"></i>';
     favBtn.classList.add("text-white", "hover:text-red-500", "transition");
 
-    if (addToFavorites.isFavorite(movie.id)) {
+    function isFavorite(movieId) {
+      const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      return favorites.includes(movieId);
+    }
+
+    if (isFavorite(movie.id)) {
       favBtn.classList.add("text-red-500");
     }
 
